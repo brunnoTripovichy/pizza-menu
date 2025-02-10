@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import './index.css';
 // import pizzaData from './data';
 
 const App = () => {
     return (
-        <div>
+        <div className="container">
           <Header />
           <Menu />
           <Footer />
@@ -12,38 +13,51 @@ const App = () => {
   );
 }
 
+const Header = () => {
+  return (
+    <header className="header">
+      <h1>Pizzaria Name</h1>
+    </header>
+  );
+}
+
 const Pizza = () => {
   return (
     <div>
       <img alt="Pizza"></img>
-      <h1>Pizza</h1>
+      <h3>Pizza</h3>
       <p>Ingridients</p>
-    </div>
-  );
-}
-
-const Header = () => {
-  return (
-    <div>
-      <h1>Pizzaria Name</h1>
     </div>
   );
 }
 
 const Menu = () => {
   return (
-    <div>
+    <main className="menu">
       <h2>Menu: </h2>
       <Pizza />
-    </div>
+    </main>
   );
 }
 
 const Footer = () => {
+  const hour = new Date().getHours();
+
+  // Check if the current time is between 12 and 23
+  const openTime = 12; 
+  const closeTime = 23;
+  const isOpen = hour >= openTime && hour <= closeTime;
+
+  if (isOpen) {
+    alert("We are open!");
+  } else {
+    alert("We are cloed!");
+  }
+
   return (
-    <div>
-      <footer>Footer</footer>
-    </div>
+    <footer className="footer">
+      Footer
+    </footer>
   );
 }
 
