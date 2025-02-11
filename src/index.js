@@ -22,15 +22,19 @@ const Header = () => {
 };
 
 const Menu = () => {
+  const isNotEmpty = pizzaData?.length > 0;
+
   return (
     <main className='menu'>
       <h2>Menu: </h2>
 
-      <ul className='pizzas'>
-        {pizzaData.map((pizza, index) => (
-          <Pizza key={index} {...pizza} />
-        ))}
-      </ul>
+      {isNotEmpty && (
+        <ul className='pizzas'>
+          {pizzaData.map((pizza, index) => (
+            <Pizza key={index} {...pizza} />
+          ))}
+        </ul>
+      )}
     </main>
   );
 };
@@ -51,18 +55,23 @@ const Pizza = (props) => {
 const Footer = () => {
   const hour = new Date().getHours();
 
-  // Check if the current time is between 12 and 23
-  const openTime = 12;
+  // Check if the current time is between 10 and 23
+  const openTime = 10;
   const closeTime = 23;
   const isOpen = hour >= openTime && hour <= closeTime;
 
-  if (isOpen) {
-    alert('We are open!');
-  } else {
-    alert('We are closed!');
-  }
-
-  return <footer className='footer'>Footer</footer>;
+  return (
+    <footer className='footer'>
+      {isOpen && (
+        <div className='order'>
+          <p>
+            We are open until {closeTime}:00 PM. Come visit us or order online!
+          </p>
+          <button className='btn'>Order Now</button>
+        </div>
+      )}
+    </footer>
+  );
 };
 
 // Create a root and render the App component under React 18
