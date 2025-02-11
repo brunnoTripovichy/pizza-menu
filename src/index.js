@@ -29,11 +29,18 @@ const Menu = () => {
       <h2>Menu: </h2>
 
       {isNotEmpty ? (
-        <ul className='pizzas'>
-          {pizzaData.map((pizza, index) => (
-            <Pizza key={index} {...pizza} />
-          ))}
-        </ul>
+        <React.Fragment>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+
+          <ul className='pizzas'>
+            {pizzaData.map((pizza, index) => (
+              <Pizza key={index} pizza={pizza} />
+            ))}
+          </ul>
+        </React.Fragment>
       ) : (
         <p>There are no pizzas available at the moment.</p>
       )}
@@ -41,14 +48,14 @@ const Menu = () => {
   );
 };
 
-const Pizza = (props) => {
+const Pizza = ({ pizza }) => {
   return (
-    <li className='pizza'>
-      <img src={props.photoName} alt={props.name} />
+    <li className={`pizza ${pizza.soldOut ? 'sold-out' : ''}`}>
+      <img src={pizza.photoName} alt={pizza.name} />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>${props.price}</span>
+        <h3>{pizza.name}</h3>
+        <p>{pizza.ingredients}</p>
+        <span>{pizza.soldOut ? 'Sold Out' : `$${pizza.price}`}</span>
       </div>
     </li>
   );
@@ -76,13 +83,10 @@ const Footer = () => {
   );
 };
 
-const Order = (props) => {
+const Order = ({ closeTime }) => {
   return (
     <div className='order'>
-      <p>
-        We are open until {props.closeTime}:00 PM. Come visit us or order
-        online!
-      </p>
+      <p>We are open until {closeTime}:00 PM. Come visit us or order online!</p>
       <button className='btn'>Order Now</button>
     </div>
   );
