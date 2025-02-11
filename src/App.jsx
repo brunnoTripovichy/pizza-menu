@@ -6,7 +6,7 @@ import Footer from './Footer';
 const App = () => {
   return (
     <div className='container'>
-      <Header />
+      <Header title='Ristoranti' />
       <Menu />
       <Footer />
     </div>
