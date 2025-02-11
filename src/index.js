@@ -28,12 +28,14 @@ const Menu = () => {
     <main className='menu'>
       <h2>Menu: </h2>
 
-      {isNotEmpty && (
+      {isNotEmpty ? (
         <ul className='pizzas'>
           {pizzaData.map((pizza, index) => (
             <Pizza key={index} {...pizza} />
           ))}
         </ul>
+      ) : (
+        <p>There are no pizzas available at the moment.</p>
       )}
     </main>
   );
@@ -62,13 +64,18 @@ const Footer = () => {
 
   return (
     <footer className='footer'>
-      {isOpen && (
+      {isOpen ? (
         <div className='order'>
           <p>
             We are open until {closeTime}:00 PM. Come visit us or order online!
           </p>
           <button className='btn'>Order Now</button>
         </div>
+      ) : (
+        <p>
+          We are closed. We open at {openTime}:00 AM. Visit us tomorrow or order
+          online!
+        </p>
       )}
     </footer>
   );
