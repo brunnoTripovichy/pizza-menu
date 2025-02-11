@@ -1,3 +1,5 @@
+import React from 'react';
+
 const PizzaItem = ({ pizza }) => {
   return (
     <li className={`pizza ${pizza.soldOut ? 'sold-out' : ''}`}>
@@ -11,4 +13,5 @@ const PizzaItem = ({ pizza }) => {
   );
 };
 
-export default PizzaItem;
+// Using React.memo to prevent re-rendering of the component if the props are the same
+export default React.memo(PizzaItem);

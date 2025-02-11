@@ -16,7 +16,7 @@ const Menu = () => {
           </p>
           <ul className='pizzas'>
             {pizzaData.map((pizza) => (
-              <PizzaItem key={pizza.id} pizza={pizza} />
+              <PizzaItem key={pizza.name} pizza={pizza} />
             ))}
           </ul>
         </>

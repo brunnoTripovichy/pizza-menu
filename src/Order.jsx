@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Order = ({ closeTime }) => {
   return (
     <div className='order'>
@@ -7,4 +9,5 @@ const Order = ({ closeTime }) => {
   );
 };
 
-export default Order;
+// Export the Order component using React.memo to prevent unnecessary re-renders
+export default React.memo(Order);
