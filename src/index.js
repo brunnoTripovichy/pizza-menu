@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import pizzaData from './data';
+import { pizzaData } from './data';
 
 const App = () => {
   return (
@@ -25,24 +25,26 @@ const Menu = () => {
   return (
     <main className='menu'>
       <h2>Menu: </h2>
-      <Pizza
-        name='Pizza Name'
-        ingredient='Ingredients'
-        image='image.jpg'
-        price={10}
-      />
+
+      <ul className='pizzas'>
+        {pizzaData.map((pizza, index) => (
+          <Pizza key={index} {...pizza} />
+        ))}
+      </ul>
     </main>
   );
 };
 
 const Pizza = (props) => {
   return (
-    <div>
-      <img src={props.image} alt={props.name}></img>
-      <h3>{props.name}</h3>
-      <p>{props.ingredient}</p>
-      <span>${props.price}</span>
-    </div>
+    <li className='pizza'>
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>${props.price}</span>
+      </div>
+    </li>
   );
 };
 
@@ -57,7 +59,7 @@ const Footer = () => {
   if (isOpen) {
     alert('We are open!');
   } else {
-    alert('We are cloed!');
+    alert('We are closed!');
   }
 
   return <footer className='footer'>Footer</footer>;
