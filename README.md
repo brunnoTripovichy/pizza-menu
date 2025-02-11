@@ -34,21 +34,6 @@ Your app will be available at **http://localhost:5173/** 🚀
 
 ---
 
-## **📂 Project Structure**  
-```
-/src
-  ├── /assets         # Images & static assets
-  ├── /components     # Reusable UI components (Button, Order)
-  ├── /features       # Feature-based components (Menu, PizzaItem)
-  ├── /layouts        # Structural components (Header, Footer)
-  ├── /data           # Mock data (pizzaData)
-  ├── App.jsx         # Main app component
-  ├── index.jsx       # Entry point
-  ├── index.css       # Global styles
-```
-
----
-
 ## **🖥️ Core React Concepts Used**  
 
 ### **1️⃣ Components**  
